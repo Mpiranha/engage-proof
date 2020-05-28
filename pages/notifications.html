@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/bootstap/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <title>Campaign</title>
+</head>
+
+<body>
+    <div class="container-fluid no-gutters">
+        <div class="d-flex">
+            <div class="sidebar">
+                <nav class="navbar flex-column sidebar-contents">
+                    <div class="navbar-collapse">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span class="flaticon-dashboard icons nav-icon"></span>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">
+                                    <span class="flaticon-megaphone icons nav-icon"></span>
+                                    Campaign
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span class="flaticon-line-chart icons nav-icon"></span>
+                                    Statistics
+                                </a>
+                            </li>
+                            <li class="nav-item mb-0">
+                                <a class="nav-link" href="#">
+                                    <span class="flaticon-settings icons nav-icon"></span>
+                                    Settings
+                                </a>
+                            </li>
+                            <ul class="nav nav-item settings-sub-nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Tutorials</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Support</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Billing</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Bonuses</a>
+                                </li>
+                            </ul>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span class="flaticon-information icons nav-icon"></span>
+                                    Knowledge Base
+                                </a>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                    <div>
+                        <a class="btn" href="#">
+                            <img class="logout" src="../assets/logout.svg" alt="log out">
+                        </a>
+                    </div>
+                </nav>
+            </div>
+            <div class="container-fluid flex-grow-1">
+                <!-- <div class="d-flex justify-content-between header-wrap">
+                    <div class="user-greeting-wrap">
+                        <div class="user-greeting">
+                            Welcome,
+                            <span class="user-name">Ejem Austine O.</span>
+                        </div>
+                        <div class="more-info">
+                            To get started, kindly refer to our quick checklist
+                            <span class="flaticon-interface-1 icons checklist-icon"></span>
+                        </div>
+                    </div>
+                    <div class="d-flex section-right">
+                        <div class="guide-btn-wrap">
+                            <a name="btn-help-desk" id="btn-help-desk" class="btn btn-help-desk" href="#"
+                                role="button">HELP DESK</a>
+                            <a name="btn-tour-guide" id="btn-tour-guide" class="btn btn-tour-guide" href="#"
+                                role="button">TOUR GUIDE</a>
+                        </div>
+                        <div class="notification-wrap">
+                            <span class="flaticon-music-and-multimedia icons notification-icon"></span>
+                        </div>
+                        <user-image-icon></user-image-icon>
+                    </div>
+                </div> -->
+                <div class="d-flex flex-column align-items-end">
+                    <div class="d-flex justify-content-between header-wrap">
+                        <div class="title-wrap">
+                            <div class="title-top">
+                                <a href="#"> Campaign/Austin Ejem</a>
+                            </div>
+                            <div class="page-title">
+                                Notifications
+                            </div>
+                        </div>
+                        <div class="d-flex section-right">
+                            <div class="guide-btn-wrap">
+                                <a name="btn-help-desk" id="btn-help-desk" class="btn btn-help-desk" href="#"
+                                    role="button">HELP DESK</a>
+                                <a name="btn-tour-guide" id="btn-tour-guide" class="btn btn-tour-guide" href="#"
+                                    role="button">TOUR GUIDE</a>
+                            </div>
+                            <div class="notification-wrap">
+                                <span class="flaticon-music-and-multimedia icons notification-icon"></span>
+                            </div>
+                            <div class="user-icon">
+                                <a href="">
+                                    <span class="flaticon-user icons user-icon-default">
+
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between w-100 mt-4">
+                        <a name="" id="" class="btn btn-create-notification-main" href="#" role="button">
+                            CREATE NOTIFICATIONS
+                            <span class="add-notification-icon-wrap">
+                                <span class="flaticon-add icons add-notification-icon"></span>
+                            </span>
+                        </a>
+
+
+
+                        <div class="dropdown filter-dropdown">
+                            <button class="btn btn-filter dropdown-toggle" type="button" id="filter-dropdown-menu-btn"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="flaticon-funnel icons filter-icon"></span>
+                                Filter
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">FAV</th>
+                                <th scope="col">CAMPAIGN</th>
+                                <th scope="col">DOMAIN</th>
+                                <th scope="col">STATUS</th>
+                                <th scope="col">CREATED</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="active">
+                                <th scope="row">
+                                    <div class="table-indicator"></div>
+                                </th>
+                                <td>Cookies Notification https</td>
+                                <td>
+                                    <a class="table-link"
+                                        href="http://https://ejemaustin.com">https://ejemaustin.com</a>
+                                </td>
+                                <td>
+                                    <label class="switch notification">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                                <td>17/05/2020</td>
+                                <td>
+                                    <nav class="nav manage-campaign">
+                                        <a class="nav-link" href="#">
+                                            EDIT
+                                            <span class="icon-tools-and-utensils edit-icon"></span>
+                                        </a>
+                                        <a class="nav-link" href="#">
+                                            STATISTICS
+                                            <span class="flaticon-line-chart icons stat-icon"></span>
+                                        </a>
+                                        <a class="nav-link" href="#">
+                                            DELETE
+                                            <span class="flaticon-delete icons delete-icon"></span>
+                                        </a>
+                                    </nav>
+                                </td>
+                            </tr>
+                            <tr class="inactive">
+                                <th scope="row">
+                                    <div class="table-indicator"></div>
+                                </th>
+                                <td>Video Pop Up</td>
+                                <td>
+                                    <a class="table-link"
+                                        href="https://artculturebmc.com/">https://artculturebmc.com/</a>
+                                </td>
+                                <td>
+                                    <label class="switch notification">
+                                        <input type="checkbox">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                                <td>17/05/2020</td>
+                                <td>
+                                    <nav class="nav manage-campaign">
+                                        <a class="nav-link" href="#">
+                                            EDIT
+                                            <span class="icon-tools-and-utensils edit-icon"></span>
+                                        </a>
+                                        <a class="nav-link" href="#">
+                                            STATISTICS
+                                            <span class="flaticon-line-chart icons stat-icon"></span>
+                                        </a>
+                                        <a class="nav-link" href="#">
+                                            DELETE
+                                            <span class="flaticon-delete icons delete-icon"></span>
+                                        </a>
+                                    </nav>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
+    <script src="../assets/js/jquery/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="../assets/js/bootstrap/bootstrap.min.js"></script>
+    <script src="../assets/js/custom/main.js"></script>
+</body>
+
+</html>
