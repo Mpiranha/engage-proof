@@ -1,0 +1,27 @@
+Informational - Notify
+
+Coupon - Coupon
+
+Live Counter - Live Visitor
+
+Email Collector - Optin
+
+Latest Conversion - Recent Conversions
+
+Conversions Counter - Conversions Counter
+
+Video - Video pop
+
+Social Share - Viral Share
+
+Random Review - Testimonials
+
+Emoji Feedback - Emoji Review
+
+Cookie Notification - Cookie Alert
+
+Score Feedback - Quick Review
+
+Request Collector - Contact Request
+
+Countdown Collector - FOMO Signup

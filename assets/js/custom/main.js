@@ -76,7 +76,7 @@ $(window).on('load', function () {
             }
         });
     });
-
+    choosePopup();
     notificationBoxes.each(function () {
         $(this).on('click', function () {
             notificationBoxes.each(function () {
@@ -85,14 +85,20 @@ $(window).on('load', function () {
                 }
             });
             $(this).addClass('selected');
-            console.log($(this).text())
+            resetPopup();
+            choosePopup($(this).attr('data-value'));
+            console.log($(this).attr('data-value'));
         });
     });
     // createContactPopup();
     // createRateEmojiPopup();
 
-    //createDemoPopup();
-    createCountDownPopup();
+    // createDemoPopup();
+    // createCountDownPopup();
+
+
+
+
 
 
 
@@ -105,6 +111,63 @@ $(window).on('load', function () {
         }, 2000);
     });
 
+    $('#title-message').on('keydown', function () {
+        if ($('.title')) {
+            $('.title').text($(this).val());
+            console.log($(this).val());
+        }
+    });
+
+    $('#title-color').on('change', function () {
+        if ($('.title')) {
+            $('.title').css('color', $(this).val());
+            console.log($(this).val());
+        }
+    });
+
+
+
+
+    $('#description-message').on('keydown', function () {
+        if ($('.description')) {
+            $('.description').text($(this).val());
+            console.log($(this).val());
+        }
+    });
+
+    $('#description-color').on('change', function () {
+        if ($('.description')) {
+            $('.description').css('color', $(this).val());
+            console.log($(this).val());
+        }
+    });
+
+    $('#background-color').on('change', function () {
+        if ($('.pop-up-inner')) {
+            $('.pop-up-inner').css('backgroundColor', $(this).val());
+            console.log($(this).val());
+        }
+    });
+
+    $('#display-close-check').on('change', function() {
+        if (!$(this).is(':checked')) {
+            $('.close-pop').css('display', 'none');
+        } else {
+            $('.close-pop').css('display', 'inline');
+        }
+        console.log($(this).is(':checked'));
+    });
+
+    $('#notification-icon').on('change', function() {
+        if ($('.icon img')) {
+            $('.icon img').attr('src', $(this).val());
+            console.log($(this).val());
+        }
+    });
+    
+    
+
+
 
 
 });
@@ -112,8 +175,55 @@ $(window).on('load', function () {
 
 function choosePopup(type) {
     switch (type) {
-        case 'sales':
+        case 'notify':
+            createSalePopup();
+            break;
+        case 'coupon':
+            createDiscountPopup();
+            break;
+        case 'live-visitor':
+            createActivePopup();
+            break;
+        case 'recent-conversation':
+            createSignedupPopup();
+            break;
+        case 'conversion-counter':
+            createBoughtPopup();
+            break;
+        case 'video-pop':
+            createDemoPopup();
+            break;
+        case 'viral-share':
+            createSharePopup();
+            break;
+        case 'testimonials':
+            createRatedPopup();
+            break;
+        case 'emoji-review':
+            createRateEmojiPopup();
+            break;
+        case 'cookie-alert':
+            createCookiesPopup();
+            break;
+        case 'quick-review':
+            createRateNumberPopup();
+            break;
+        case 'contact-request':
+            createContactPopup();
+            break;
+        case 'fomo-signup':
+            createCountDownPopup();
+            break;
+        case 'email-optin':
+            createNewsletterPopup();
+            break;
+        default:
+            createSalePopup();
     }
+}
+
+function resetPopup() {
+    $('.pop-up-wrap').remove();
 }
 
 function createSalePopup() {
@@ -495,7 +605,7 @@ function startTimer(date) {
 
     // Set the date we're counting down to
     var countDownDate = new Date(date).getTime();
-    
+
 
     // Update the count down every 1 second
     var x = setInterval(function () {
@@ -530,11 +640,11 @@ function startTimer(date) {
             clearInterval(x);
             $('.timer').html('CLOSED');
             $('.timer').css({
-                'alignSelf':'center',
-                'color':'red',
-                'fontSize':'1.4rem',
+                'alignSelf': 'center',
+                'color': 'red',
+                'fontSize': '1.4rem',
                 'fontWeight': '700',
-                'animation':'flash 1s infinite alternate'
+                'animation': 'flash 1s infinite alternate'
             });
         }
     }, 1000);

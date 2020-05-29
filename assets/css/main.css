@@ -808,7 +808,7 @@ label[for=notification-name] {
 }
 
 .selected .notification-info-icon::before {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
 }
 
 .notification-heading .section-name {
