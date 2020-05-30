@@ -71,6 +71,12 @@ $(window).on('load', function () {
         }
     });
 
+    $('input[name="daterange"]').daterangepicker({
+        opens: 'right'
+    }, function (start, end, label) {
+        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    });
+
     notificationCheckbox.each(function () {
         $(this).on('change', function () {
             console.log($(this).is(":checked"));
@@ -114,6 +120,46 @@ $(window).on('load', function () {
 
 
 
+    $('#trigger-all').on('change', function () {
+
+        if ($(this).is(':checked')) {
+            $('.btn-add-trigger').css('display', 'none');
+            $('.trigger-input').each(function () {
+                $(this).prop('disabled', true);
+            });
+        } else {
+            $('.btn-add-trigger').css('display', 'inline-block');
+            $('.trigger-input').each(function () {
+                $(this).prop('disabled', false);
+            });
+        }
+
+        console.log()
+    });
+
+    $('.btn-add-trigger').on('click', function () {
+        var str = '<div class="d-flex align-items-center mb-2">' +
+            '<select class="form-control select-trigger trigger-input"' +
+            'name="">' +
+            '<option value="exact-match">Exact match</option>' +
+            '<option value="contains">Contains</option>' +
+            '<option value="start-with">Starts With</option>' +
+            '<option value="ends-with">Ends With</option>' +
+            '<option value="page-contains">Page Contains</option>' +
+            '</select>' +
+            '<input type="text" name="icon-url"' +
+            'class="form-control notification-icon-input trigger-input"' +
+            'placeholder="Full URL (ex: https://domain.com/destination )">' +
+            '<span class="flaticon-error icons delete-trigger"></span>'
+        '</div>';
+
+        var elem = $.parseHTML(str);
+        $('.trigger-wrap').append(elem);
+        deleteTrigger();
+    });
+
+
+    deleteTrigger();
     $('.copy-html-icon').on('click', function () {
         $('.copy-notification').css('display', 'flex');
         $('.user-link-textarea').select();
@@ -161,7 +207,7 @@ $(window).on('load', function () {
         }
     });
 
-    $('#border-radius').on('keyup', function () {
+    $('#border-radius').on('change', function () {
         if ($('.pop-up-inner')) {
             $('.pop-up-inner').css('borderRadius', $(this).val() + 'px');
             console.log($(this).val());
@@ -245,6 +291,14 @@ function resetPopup() {
     $('.pop-up-wrap').remove();
 }
 
+function deleteTrigger() {
+    $('.delete-trigger').each(function () {
+        $(this).on('click', function () {
+            $(this).parent().remove();
+        });
+    });
+}
+
 function createSalePopup() {
     var str = '<div class="pop-up-wrap">' +
         '<div class="pop-up-inner" style="display: flex; align-items: center; position: relative; border: 1px solid #6b60cb; padding: 2rem; width: auto; background-color: #ffffff;">' +
@@ -255,7 +309,7 @@ function createSalePopup() {
         '<div style="display: flex; flex-direction: column">' +
         '<div class="title" style="font-size: 1.2rem;font-weight: 700;">Flash Sale 🔥</div>' +
         '<div class="description" style="font-size: 1rem;font-weight: 600;">Limited sale until tonight, right now!</div>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         ' </div> ' +
         ' </div>';
@@ -275,7 +329,7 @@ function createDiscountPopup() {
         '<div class="description" style="font-size: 1rem;font-weight: 600;">Limited sales coupon code.</div>' +
         '<div class="coupon-code" style="text-align: center;padding: 0.5rem 1rem;border: 2px dashed #000000;border-radius: 1rem;font-weight: 800;font-size: 1.1rem;margin-top: 1rem">COUPON20</div>' +
         '<a name="" class="btn btn-pop-up" href="#" role="button" style="color: #ffffff; background: linear-gradient(to right, #6c6ade, #884993); font-size: 1rem; margin-top: 1rem; font-weight: 800; ">CHECK ACTIVITY</a>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 0.4rem"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 0.4rem"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         ' </div> ' +
         ' </div>';
@@ -296,7 +350,7 @@ function createCookiesPopup() {
         '</div>' +
         '<div style="display: flex; align-items: center; margin-top: 0.5rem">' +
         '<button type="button" class="btn btn-pop-up" data-close="pop-up-wrap" style="padding: 0.35rem 1.5rem; background: linear-gradient(to right, #6c6ade, #884993); color: #ffffff;margin-right: 0.5rem">OK, COOL</button>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         '</div>' +
         ' </div> ' +
@@ -315,12 +369,12 @@ function createActivePopup() {
         '<div style="display: flex; flex-direction: column">' +
         '<div>' +
         '<div class="active-users" style="background-color: #9e65cd;display: inline-flex;border-radius: 1rem;padding: 0.2rem 0.6rem;align-items: center;">' +
-        '<div class="checked-icon" style="width: 1.2rem; height: 1.2rem;background-image: url(../../assets/icons/checked.svg);background-repeat: no-repeat;background-position: center;background-size: cover;border: 2px solid #ffffff;border-radius: 50%;margin-right: 1rem;"></div>' +
+        '<div class="active-icon" style="width: 1.2rem; height: 1.2rem;background-color: #55b75b; border: 2px solid #ffffff;border-radius: 50%;margin-right: 1rem;"></div>' +
         '<span class="value" style="color: #ffffff;font-weight: 800;font-size: 1.2rem;">20</span>' +
         '</div>' +
         '</div>' +
         '<div class="title" style="font-size: 1.2rem;font-weight: 700;">Active Visitor Now.</div>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         ' </div> ' +
         ' </div>';
@@ -334,13 +388,13 @@ function createSignedupPopup() {
         ' <span data-close="pop-up-wrap" class="icon-close-tool  close-pop" style="position: absolute; right: 0; top: 0; font-size: 1.3rem; color: #6b60cb;"></span>' +
         '<div class="icon" style="width: 5rem; margin-right: 1rem; position: relative;"> ' +
         '<img src="../assets/icons/avatar.svg" class="img-fluid" alt="icon">' +
-        '<div class="checked-icon" style="width: 1.5rem;height: 1.5rem;background-image: url(../../assets/icons/checked.svg);background-repeat: no-repeat;background-position: center;background-size: cover;border: 3px solid #ffffff;border-radius: 50%;margin-right: 1rem;position: absolute;right: -15px;bottom: 0;"></div>' +
+        '<div class="checked-icon" style="width: 1.5rem;height: 1.5rem; background-image: url(\'../../assets/icons/checked.svg\'); border: 3px solid #ffffff;border-radius: 50%;margin-right: 1rem;position: absolute;right: -15px;bottom: 0;"></div>' +
         '</div>' +
         '<div style="display: flex; flex-direction: column">' +
         '<div class="title" style="font-size: 1.2rem;font-weight: 700;">A cool person.</div>' +
         '<div class="description" style="font-size: 1rem;font-weight: 600;">Signed up for the newsletter.</div>' +
         '<div class="time" style="font-size: 0.8rem;font-weight: 600; color: #857878;">10 mins ago</div>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 1rem"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 1rem"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         ' </div> ' +
         ' </div>';
@@ -375,7 +429,7 @@ function createRatedPopup() {
         '</div>' +
         '<div class="title" style="font-size: 1.2rem;font-weight: 700;">A cool person.</div>' +
         '<div class="description" style="font-size: 1rem;font-weight: 600;font-style: italic;">"Social proof is a 5 star product."</div>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 1rem"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 1rem"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         ' </div> ' +
         ' </div>';
@@ -406,7 +460,7 @@ function createRateEmojiPopup() {
         '<img class="img-fluid" src="../assets/icons/in-love-emoji.png" alt="in love emooji">' +
         '</div>' +
         '</div>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 1rem"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 1rem"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         ' </div> ' +
         ' </div>';
     var popup = $.parseHTML(str);
@@ -433,7 +487,9 @@ function createBoughtPopup() {
         '<img src="../assets/icons/avatar.svg" class="img-fluid" alt="icon">' +
         '<div style="position: absolute; bottom: -20px; right: -26px;">' +
         '<div class="active-users" style="background-color: #9e65cd;display: inline-flex;border-radius: 1rem;padding: 0.2rem 0.6rem;align-items: center;">' +
-        '<div class="checked-icon" style="width: 1.2rem; height: 1.2rem;background-image: url(../../assets/icons/supermarket.svg);background-repeat: no-repeat;background-position: center;background-size: cover;background-color: #ffffff;border-radius: 50%;margin-right: 1rem;"></div>' +
+        '<div class="cart-icon" style="width: 1.4rem; height: 1.4rem; background-color: #ffffff;border-radius: 50%;margin-right: 1rem;padding: 0.2rem">' +
+        '<img src="../../assets/icons/supermarket.svg" alt="cart-icon" class="img-fluid">' +
+        '</div>' +
         '<span class="value" style="color: #ffffff;font-weight: 800;font-size: 1.2rem;">20</span>' +
         '</div>' +
         '</div>' +
@@ -441,7 +497,7 @@ function createBoughtPopup() {
         '<div style="display: flex; flex-direction: column">' +
         '<div class="title" style="font-size: 1.2rem;font-weight: 700;">People bought the product.</div>' +
         '<div class="time" style="font-size: 0.8rem;font-weight: 600; color: #857878;">in the last 2 hours</div>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 1rem"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 1rem"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         ' </div> ' +
         ' </div>';
@@ -466,7 +522,7 @@ function createRateNumberPopup() {
         '<div data-value="4" class="rate-value">4</div>' +
         '<div data-value="5" class="rate-value">5</div>' +
         '</div>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 1rem"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 1rem"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         ' </div> ' +
         ' </div>';
@@ -501,7 +557,7 @@ function createSharePopup() {
         '<a href="#" class="social-name linkedin">Linkedin</a>' +
         '</div>' +
         '<div class="description" style="font-size: 1rem;font-weight: 600;">We appreciate all the shares to support us,Thank you.</div>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         ' </div> ' +
         ' </div>';
@@ -524,7 +580,7 @@ function createNewsletterPopup() {
         '<input type="email" class="form-control popup-input" placeholder="Enter your primary email address">' +
         '<button class="btn btn-popup-signup">Sign up</button>' +
         '</div>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         ' </div> ' +
         ' </div>';
@@ -550,7 +606,7 @@ function createContactPopup() {
         '<input type="email" class="form-control popup-input" >' +
         '<button class="btn btn-popup-call">Call me back</button>' +
         '</div>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         ' </div> ' +
         ' </div>';
@@ -572,7 +628,7 @@ function createDemoPopup() {
         '<input type="email" class="form-control popup-input" >' +
         '<button class="btn btn-popup-signup">Sign up</button>' +
         '</div>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         ' </div> ' +
         ' </div>';
@@ -588,7 +644,7 @@ function createCountDownPopup(time) {
         '<div class="icon" style="width: 6rem; margin-right: 1rem"> ' +
         '<img src="../assets/icons/timer.svg" class="img-fluid" alt="icon">' +
         '</div>' +
-        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;margin-top: 1rem;"> Verified by EngageProof</div>' +
+        ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;margin-top: 1rem;"><img src="../assets/logo.png" style="width: 0.7rem;height: 0.7rem; margin-right: 0.4rem;"> Verified by EngageProof</div>' +
         '</div>' +
         '<div style="display: flex; flex-direction: column">' +
         '<div class="title" style="font-size: 1.3rem;font-weight: 700;">Building a website.</div>' +

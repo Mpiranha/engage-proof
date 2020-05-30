@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/bootstap/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/main.css">
-    <title>Campaign</title>
+    <title>New Notification</title>
 </head>
 
 <body>
@@ -385,32 +385,45 @@
                                                     </small>
                                                 </div>
                                                 <div class="form-group">
-                                                    <div class="d-flex">
-                                                        <div class="mr-2">
-                                                            <label class="switch">
-                                                                <input type="checkbox" checked>
-                                                                <span class="slider round"></span>
-                                                            </label>
+                                                    <div class="d-flex justify-content-between">
+
+                                                        <div class="d-flex">
+                                                            <div class="mr-2">
+                                                                <label class="switch">
+                                                                    <input type="checkbox" id="trigger-all">
+                                                                    <span class="slider round"></span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="d-flex flex-column">
+                                                                <label for="trigger">Trigger on all pages</label>
+                                                                <small class="text-muted">
+                                                                    Where will the notification show?
+                                                                </small>
+                                                            </div>
                                                         </div>
-                                                        <div class="d-flex flex-column">
-                                                            <label for="trigger">Trigger on all pages</label>
-                                                            <small class="text-muted">
-                                                                Where will the notification show?
-                                                            </small>
+                                                        <div>
+                                                            <button type="button" class="btn btn-add-trigger">
+                                                                Add new trigger
+                                                            </button>
                                                         </div>
                                                     </div>
-                                                    <div class="d-flex">
-                                                        <select id="my-select" class="form-control select-trigger"
-                                                            name="">
-                                                            <option value="exact-match">Exact match</option>
-                                                            <option value="contains">Contains</option>
-                                                            <option value="start-with">Starts With</option>
-                                                            <option value="ends-with">Ends With</option>
-                                                            <option value="page-contains">Page Contains</option>
-                                                        </select>
-                                                        <input type="text" name="icon-url" id="destination-url"
-                                                            class="form-control notification-icon-input"
-                                                            placeholder="Full URL (ex: https://domain.com/destination )">
+                                                    <div class="d-flex flex-column trigger-wrap">
+                                                        <div class="d-flex align-items-center mb-2">
+                                                            <select id="my-select"
+                                                                class="form-control select-trigger trigger-input"
+                                                                name="">
+                                                                <option value="exact-match">Exact match</option>
+                                                                <option value="contains">Contains</option>
+                                                                <option value="start-with">Starts With</option>
+                                                                <option value="ends-with">Ends With</option>
+                                                                <option value="page-contains">Page Contains</option>
+                                                            </select>
+                                                            <input type="text" name="icon-url" id="destination-url"
+                                                                class="form-control notification-icon-input trigger-input"
+                                                                placeholder="Full URL (ex: https://domain.com/destination )">
+
+                                                            <span class="flaticon-error icons delete-trigger"></span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -420,8 +433,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="d-flex">
-                                                        <select id="select-behaviour" class="form-control select-trigger"
-                                                            name="">
+                                                        <select id="select-behaviour"
+                                                            class="form-control select-trigger" name="">
                                                             <option value="delay" selected>Delay</option>
                                                             <option value="exit-intent">Exit Intent</option>
                                                             <option value="scroll-percentage">Scroll Percentage</option>
@@ -429,10 +442,10 @@
                                                         <input type="number" name="icon-url" id="number-sec"
                                                             class="form-control notification-icon-input"
                                                             placeholder="Number of seconds to wait until notification shows up">
-                                                            <input type="number" name="icon-url" id="percentage-scrolling"
+                                                        <input type="number" name="icon-url" id="percentage-scrolling"
                                                             class="form-control notification-icon-input"
                                                             placeholder="Percenttage of scrolling from the top">
-                                                            
+
                                                     </div>
                                                     <small class="text-muted">
                                                         On what event the notification should show up.
@@ -447,7 +460,8 @@
                                                             </label>
                                                         </div>
                                                         <div class="d-flex flex-column">
-                                                            <label for="display-per-frame">Display notification once per frame</label>
+                                                            <label for="display-per-frame">Display notification once per
+                                                                frame</label>
                                                             <small class="text-muted">
                                                                 A visitor session is cleared once the browser is closed.
                                                             </small>
@@ -463,9 +477,11 @@
                                                             </label>
                                                         </div>
                                                         <div class="d-flex flex-column">
-                                                            <label for="small-screen-visible">Display on small screen</label>
+                                                            <label for="small-screen-visible">Display on small
+                                                                screen</label>
                                                             <small class="text-muted">
-                                                                Wether or not to display the notification on when pixels available are smaller than 768px.
+                                                                Wether or not to display the notification on when pixels
+                                                                available are smaller than 768px.
                                                             </small>
                                                         </div>
                                                     </div>
@@ -537,10 +553,9 @@
                                             </div>
                                             <div class="notification-edit w-100">
                                                 <div class="form-group">
-                                                    <label for="select-duration">Display Duration</label>
-                                                    <select id="select-duration" class="form-control" name="duration">
-                                                        <option selected>5</option>
-                                                    </select>
+                                                    <input type="number" name="popup-duration" id="popup-duration"
+                                                        class="form-control notification-icon-input"
+                                                        placeholder="in seconds" value="5">
                                                     <small class="text-muted">
                                                         How many seconds to display the notification. Set -1 to display
                                                         indefinitely.
@@ -549,7 +564,15 @@
                                                 <div class="form-group">
                                                     <label for="select-position">Display Position</label>
                                                     <select id="select-position" class="form-control" name="position">
-                                                        <option selected>Bottom Left</option>
+                                                        <option value="top-left">Top Left</option>
+                                                        <option value="top-center">Top Center</option>
+                                                        <option value="top-right">Top Right</option>
+                                                        <option value="middle-left">Middlee Left</option>
+                                                        <option value="middle-center">Middle Center</option>
+                                                        <option value="middle-right">Middle Right</option>
+                                                        <option selected value="bottom-left">Bottom Left</option>
+                                                        <option value="bottom-center">Bottom Center</option>
+                                                        <option value="bottom-right">Bottom Right</option>
                                                     </select>
                                                     <small class="text-muted">
                                                         Position of the notification on the screen. Position doesn't

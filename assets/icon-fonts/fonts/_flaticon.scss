@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 29/05/2020 02:27
+    Creation date: 30/05/2020 21:36
     */
 
     @font-face {
@@ -116,6 +116,7 @@
 .flaticon-like:before { content: "\f14c"; }
 .flaticon-user-1:before { content: "\f14d"; }
 .flaticon-messenger:before { content: "\f14e"; }
+.flaticon-left-arrow:before { content: "\f14f"; }
     
     $font-Flaticon-dashboard: "\f100";
     $font-Flaticon-stack: "\f101";
@@ -196,3 +197,4 @@
     $font-Flaticon-like: "\f14c";
     $font-Flaticon-user-1: "\f14d";
     $font-Flaticon-messenger: "\f14e";
+    $font-Flaticon-left-arrow: "\f14f";
