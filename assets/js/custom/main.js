@@ -111,7 +111,7 @@ $(window).on('load', function () {
         }, 2000);
     });
 
-    $('#title-message').on('keydown', function () {
+    $('#title-message').on('keyup', function () {
         if ($('.title')) {
             $('.title').text($(this).val());
             console.log($(this).val());
@@ -128,7 +128,7 @@ $(window).on('load', function () {
 
 
 
-    $('#description-message').on('keydown', function () {
+    $('#description-message').on('keyup', function () {
         if ($('.description')) {
             $('.description').text($(this).val());
             console.log($(this).val());
@@ -149,7 +149,14 @@ $(window).on('load', function () {
         }
     });
 
-    $('#display-close-check').on('change', function() {
+    $('#border-radius').on('keyup', function () {
+        if ($('.pop-up-inner')) {
+            $('.pop-up-inner').css('borderRadius', $(this).val() + 'px');
+            console.log($(this).val());
+        }
+    });
+
+    $('#display-close-check').on('change', function () {
         if (!$(this).is(':checked')) {
             $('.close-pop').css('display', 'none');
         } else {
@@ -158,14 +165,14 @@ $(window).on('load', function () {
         console.log($(this).is(':checked'));
     });
 
-    $('#notification-icon').on('change', function() {
+    $('#notification-icon').on('change', function () {
         if ($('.icon img')) {
             $('.icon img').attr('src', $(this).val());
             console.log($(this).val());
         }
     });
-    
-    
+
+
 
 
 
@@ -231,10 +238,10 @@ function createSalePopup() {
         '<div class="pop-up-inner" style="display: flex; align-items: center; position: relative; border: 1px solid #6b60cb; padding: 2rem; width: auto; background-color: #ffffff;">' +
         ' <span data-close="pop-up-wrap" class="icon-close-tool  close-pop" style="position: absolute; right: 0; top: 0; font-size: 1.3rem; color: #6b60cb;"></span>' +
         '<div class="icon" style="width: 5rem; margin-right: 1rem"> ' +
-        '<img src="../assets/icons/avatar.svg" class="img-fluid" alt="icon">' +
+        '<img src="../assets/icons/commerce-and-shopping-purple.png" class="img-fluid" alt="icon">' +
         '</div>' +
         '<div style="display: flex; flex-direction: column">' +
-        '<div class="title" style="font-size: 1.2rem;font-weight: 700;">Flash Sale</div>' +
+        '<div class="title" style="font-size: 1.2rem;font-weight: 700;">Flash Sale 🔥</div>' +
         '<div class="description" style="font-size: 1rem;font-weight: 600;">Limited sale until tonight, right now!</div>' +
         ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"> Verified by EngageProof</div>' +
         '</div>' +
@@ -249,14 +256,13 @@ function createDiscountPopup() {
         '<div class="pop-up-inner" style="display: flex; align-items: center; position: relative; border: 1px solid #6b60cb; padding: 2rem;width: auto; background-color: #ffffff;">' +
         ' <span data-close="pop-up-wrap" class="icon-close-tool  close-pop" style="position: absolute; right: 0; top: 0; font-size: 1.3rem; color: #6b60cb;"></span>' +
         '<div class="icon" style="width: 6rem; margin-right: 2rem"> ' +
-        '<img src="../assets/icons/avatar.svg" class="img-fluid" alt="icon">' +
+        '<img src="../assets/icons/commerce-and-shopping-purple.png" class="img-fluid" alt="icon">' +
         '</div>' +
         '<div style="display: flex; flex-direction: column">' +
-        '<div class="title" style="font-size: 1.2rem;font-weight: 700;">Flash Sale</div>' +
+        '<div class="title" style="font-size: 1.2rem;font-weight: 700;">35% off 🔥!</div>' +
         '<div class="description" style="font-size: 1rem;font-weight: 600;">Limited sales coupon code.</div>' +
         '<div class="coupon-code" style="text-align: center;padding: 0.5rem 1rem;border: 2px dashed #000000;border-radius: 1rem;font-weight: 800;font-size: 1.1rem;margin-top: 1rem">COUPON20</div>' +
-        '<a name="" class="btn btn-pop-up" href="#" role="button" style="color: #ffffff; background-color: #000000; font-size: 1rem; margin-top: 1rem; font-weight: 800">GET COUPON</a>' +
-        '<a data-close="pop-up-wrap" style="text-decoration: underline; margin-top: 1rem; font-weight: 700; font-size: 0.8rem">No I don\'t want to save money!</a>' +
+        '<a name="" class="btn btn-pop-up" href="#" role="button" style="color: #ffffff; background: linear-gradient(to right, #6c6ade, #884993); font-size: 1rem; margin-top: 1rem; font-weight: 800; ">CHECK ACTIVITY</a>' +
         ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500; margin-top: 0.4rem"> Verified by EngageProof</div>' +
         '</div>' +
         ' </div> ' +
@@ -269,8 +275,8 @@ function createCookiesPopup() {
     var str = '<div class="pop-up-wrap">' +
         '<div class="pop-up-inner" style="display: flex; align-items: center; position: relative; border: 1px solid #6b60cb; padding: 2rem; width: auto; background-color: #ffffff;">' +
         ' <span data-close="pop-up-wrap" class="icon-close-tool  close-pop" style="position: absolute; right: 0; top: 0; font-size: 1.3rem; color: #6b60cb;"></span>' +
-        '<div class="icon" style="width: 5rem; margin-right: 1rem"> ' +
-        '<img src="../assets/icons/avatar.svg" class="img-fluid" alt="icon">' +
+        '<div class="icon" style="width: 5rem; margin-right: 1.3rem"> ' +
+        '<img src="../assets/icons/kissclipart-cookie-emoji-clipart-chocolate-chip-cookie-black-a-427e335f02cfbcd3.png" class="img-fluid" alt="icon">' +
         '</div>' +
         '<div style="display: flex; flex-direction: column">' +
         '<div class="description" style="font-size: 1rem;font-weight: 600;">This website uses cookies to ensure you get the best experience.' +
@@ -334,7 +340,7 @@ function createRatedPopup() {
     var str = '<div class="pop-up-wrap">' +
         '<div class="pop-up-inner" style="display: flex; align-items: center; position: relative; border: 1px solid #6b60cb; padding: 2rem; width: auto; background-color: #ffffff;">' +
         '<span data-close="pop-up-wrap" class="icon-close-tool  close-pop" style="position: absolute; right: 0; top: 0; font-size: 1.3rem; color: #6b60cb;"></span>' +
-        '<div class="icon" style="width: 5rem; margin-right: 1rem; position: relative;"> ' +
+        '<div class="icon" style="width: 5rem; margin-right: 1.5rem; position: relative;"> ' +
         '<img src="../assets/icons/avatar.svg" class="img-fluid" alt="icon">' +
         '<span class="flaticon-star icons star-icon" style="color: #e3a429;background-color: #ffffff; padding: 0.1rem 0.3rem;border-radius: 50%;margin-right: 1rem;position: absolute;right: -15px;bottom: 0;"></span>' +
         '</div>' +
@@ -495,14 +501,15 @@ function createNewsletterPopup() {
     var str = '<div class="pop-up-wrap">' +
         '<div class="pop-up-inner" style="display: flex; align-items: center; position: relative; border: 1px solid #6b60cb; padding: 2rem; width: auto; background-color: #ffffff;">' +
         ' <span data-close="pop-up-wrap" class="icon-close-tool  close-pop" style="position: absolute; right: 0; top: 0; font-size: 1.3rem; color: #6b60cb;"></span>' +
-        '<div class="icon" style="width: 5rem; margin-right: 1rem"> ' +
+        '<div class="icon" style="width: 5rem; margin-right: 1rem; position:relative;"> ' +
         '<img src="../assets/icons/avatar.svg" class="img-fluid" alt="icon">' +
+        '<span class="flaticon-add icons star-icon" style="color: #e3a429;background-color: #ffffff; padding: 0.1rem 0.3rem;border-radius: 50%;margin-right: 1rem;position: absolute;right: -22px;bottom: -8px;"></span>' +
         '</div>' +
         '<div style="display: flex; flex-direction: column">' +
         '<div class="title" style="font-size: 1.3rem;font-weight: 700;">Sign up</div>' +
         '<div class="description" style="font-size: 1rem;font-weight: 600;margin-top: 1rem;">We will not send any spam email and you can unsubscribe anytime.</div>' +
         '<div class="popup-form-wrap">' +
-        '<input type="email" class="form-control popup-input" >' +
+        '<input type="email" class="form-control popup-input" placeholder="Enter your primary email address">' +
         '<button class="btn btn-popup-signup">Sign up</button>' +
         '</div>' +
         ' <div class="verification-text" style="font-size: 0.8rem;font-weight: 500;"> Verified by EngageProof</div>' +
@@ -517,8 +524,12 @@ function createContactPopup() {
     var str = '<div class="pop-up-wrap">' +
         '<div class="pop-up-inner" style="display: flex; align-items: center; position: relative; border: 1px solid #6b60cb; padding: 2rem; width: auto; background-color: #ffffff;">' +
         ' <span data-close="pop-up-wrap" class="icon-close-tool  close-pop" style="position: absolute; right: 0; top: 0; font-size: 1.3rem; color: #6b60cb;"></span>' +
-        '<div class="icon" style="width: 5rem; margin-right: 1rem"> ' +
+        '<div class="icon" style="width: 5rem; margin-right: 3rem; position: relative;"> ' +
         '<img src="../assets/icons/avatar.svg" class="img-fluid" alt="icon">' +
+        '<div style="display: flex; flex-direction: column; background-color: #e4dfdf; position: absolute; bottom: -25px; right: -30px; border-radius: 0.5rem; padding: 0.4rem 0.6rem; ">' + 
+        '<div style="font-size: 0.5rem; color: #ecb612">SUPPORT TEAM</div>' +
+        '<div class="support-name" style="font-size: 0.8rem; margin-top: -5px;">Austin Ejem</div>' +
+        '</div>' +
         '</div>' +
         '<div style="display: flex; flex-direction: column">' +
         '<div class="title" style="font-size: 1.3rem;font-weight: 700;">Any questions?</div>' +
@@ -539,7 +550,7 @@ function createDemoPopup() {
     var str = '<div class="pop-up-wrap">' +
         '<div class="pop-up-inner" style="display: flex; align-items: center; position: relative; border: 1px solid #6b60cb; padding: 2rem; width: auto; background-color: #ffffff; background-color: #ffffff;">' +
         ' <span data-close="pop-up-wrap" class="icon-close-tool  close-pop" style="position: absolute; right: 0; top: 0; font-size: 1.3rem; color: #6b60cb;"></span>' +
-        '<div class="icon" style="width: 20rem; margin-right: 1rem"> ' +
+        '<div class="icon" style="width: 22rem; margin-right: 1rem"> ' +
         '<iframe class="demo-video" width="100%" height="auto" src="https://www.youtube.com/embed/cBphblC759M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
         '</div>' +
         '<div style="display: flex; flex-direction: column">' +
