@@ -275,8 +275,8 @@ function createCookiesPopup() {
     var str = '<div class="pop-up-wrap">' +
         '<div class="pop-up-inner" style="display: flex; align-items: center; position: relative; border: 1px solid #6b60cb; padding: 2rem; width: auto; background-color: #ffffff;">' +
         ' <span data-close="pop-up-wrap" class="icon-close-tool  close-pop" style="position: absolute; right: 0; top: 0; font-size: 1.3rem; color: #6b60cb;"></span>' +
-        '<div class="icon" style="width: 5rem; margin-right: 1.3rem"> ' +
-        '<img src="../assets/icons/kissclipart-cookie-emoji-clipart-chocolate-chip-cookie-black-a-427e335f02cfbcd3.png" class="img-fluid" alt="icon">' +
+        '<div class="icon" style="width: 6rem; margin-right: 1.3rem"> ' +
+        '<img src="../assets/icons/cookie.png" class="img-fluid" alt="icon">' +
         '</div>' +
         '<div style="display: flex; flex-direction: column">' +
         '<div class="description" style="font-size: 1rem;font-weight: 600;">This website uses cookies to ensure you get the best experience.' +
