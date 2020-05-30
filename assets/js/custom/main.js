@@ -58,6 +58,18 @@ $(window).on('load', function () {
         slides[slideIndex - 1].style.display = "block";
     }
     console.log(notificationCheckbox);
+    $('#select-behaviour').on('change', function () {
+        if ($(this).val() == 'delay') {
+            $('#number-sec').css('display', 'block');
+            $('#percentage-scrolling').css('display', 'none');
+        } else if ($(this).val() == 'scroll-percentage') {
+            $('#number-sec').css('display', 'none');
+            $('#percentage-scrolling').css('display', 'block');
+        } else {
+            $('#number-sec').css('display', 'none');
+            $('#percentage-scrolling').css('display', 'none');
+        }
+    });
 
     notificationCheckbox.each(function () {
         $(this).on('change', function () {
@@ -526,7 +538,7 @@ function createContactPopup() {
         ' <span data-close="pop-up-wrap" class="icon-close-tool  close-pop" style="position: absolute; right: 0; top: 0; font-size: 1.3rem; color: #6b60cb;"></span>' +
         '<div class="icon" style="width: 5rem; margin-right: 3rem; position: relative;"> ' +
         '<img src="../assets/icons/avatar.svg" class="img-fluid" alt="icon">' +
-        '<div style="display: flex; flex-direction: column; background-color: #e4dfdf; position: absolute; bottom: -25px; right: -30px; border-radius: 0.5rem; padding: 0.4rem 0.6rem; ">' + 
+        '<div style="display: flex; flex-direction: column; background-color: #e4dfdf; position: absolute; bottom: -25px; right: -30px; border-radius: 0.5rem; padding: 0.4rem 0.6rem; ">' +
         '<div style="font-size: 0.5rem; color: #ecb612">SUPPORT TEAM</div>' +
         '<div class="support-name" style="font-size: 0.8rem; margin-top: -5px;">Austin Ejem</div>' +
         '</div>' +

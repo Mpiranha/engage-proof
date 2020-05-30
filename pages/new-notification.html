@@ -198,8 +198,7 @@
                                                 <div class="notification-type-box" data-value="live-visitor">
                                                     <span class="flaticon-push-pin icons notification-pin-icon"></span>
                                                     <div class="notification-content">
-                                                        <span
-                                                            class="flaticon-live icons notification-info-icon"></span>
+                                                        <span class="flaticon-live icons notification-info-icon"></span>
                                                         <h2 class="notification-type">Live Visitor</h2>
                                                     </div>
                                                 </div>
@@ -246,8 +245,7 @@
                                                 <div class="notification-type-box" data-value="emoji-review">
                                                     <span class="flaticon-push-pin icons notification-pin-icon"></span>
                                                     <div class="notification-content">
-                                                        <span
-                                                            class="flaticon-like icons notification-info-icon"></span>
+                                                        <span class="flaticon-like icons notification-info-icon"></span>
                                                         <h2 class="notification-type">Emoji Review</h2>
                                                     </div>
                                                 </div>
@@ -404,11 +402,72 @@
                                                     <div class="d-flex">
                                                         <select id="my-select" class="form-control select-trigger"
                                                             name="">
-                                                            <option>Exact match</option>
+                                                            <option value="exact-match">Exact match</option>
+                                                            <option value="contains">Contains</option>
+                                                            <option value="start-with">Starts With</option>
+                                                            <option value="ends-with">Ends With</option>
+                                                            <option value="page-contains">Page Contains</option>
                                                         </select>
                                                         <input type="text" name="icon-url" id="destination-url"
                                                             class="form-control notification-icon-input"
                                                             placeholder="Full URL (ex: https://domain.com/destination )">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div>
+                                                        <div>
+                                                            <label for="trigger">Trigger on all pages</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <select id="select-behaviour" class="form-control select-trigger"
+                                                            name="">
+                                                            <option value="delay" selected>Delay</option>
+                                                            <option value="exit-intent">Exit Intent</option>
+                                                            <option value="scroll-percentage">Scroll Percentage</option>
+                                                        </select>
+                                                        <input type="number" name="icon-url" id="number-sec"
+                                                            class="form-control notification-icon-input"
+                                                            placeholder="Number of seconds to wait until notification shows up">
+                                                            <input type="number" name="icon-url" id="percentage-scrolling"
+                                                            class="form-control notification-icon-input"
+                                                            placeholder="Percenttage of scrolling from the top">
+                                                            
+                                                    </div>
+                                                    <small class="text-muted">
+                                                        On what event the notification should show up.
+                                                    </small>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="d-flex">
+                                                        <div class="mr-2">
+                                                            <label class="switch">
+                                                                <input type="checkbox" checked id="display-per-frame">
+                                                                <span class="slider round"></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="d-flex flex-column">
+                                                            <label for="display-per-frame">Display notification once per frame</label>
+                                                            <small class="text-muted">
+                                                                A visitor session is cleared once the browser is closed.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="d-flex">
+                                                        <div class="mr-2">
+                                                            <label class="switch">
+                                                                <input type="checkbox" checked id="small-creen-visible">
+                                                                <span class="slider round"></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="d-flex flex-column">
+                                                            <label for="small-screen-visible">Display on small screen</label>
+                                                            <small class="text-muted">
+                                                                Wether or not to display the notification on when pixels available are smaller than 768px.
+                                                            </small>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <ul class="nav justify-content-end mt-3">
@@ -569,7 +628,8 @@
                             <div class="popup-wrap h-100">
                                 <div id="popup-preview">
                                     <img class="img-fluid top-design" src="../assets/shape-top.png" alt="top-design">
-                                    <img class="img-fluid bottom-design" src="../assets/shape-bottom.png" alt="top-design">
+                                    <img class="img-fluid bottom-design" src="../assets/shape-bottom.png"
+                                        alt="top-design">
                                 </div>
                             </div>
                         </div>

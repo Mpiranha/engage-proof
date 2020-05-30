@@ -1037,6 +1037,10 @@ label[for=trigger]~small {
     margin-top: -13px;
 }
 
+#percentage-scrolling {
+    display: none;
+}
+
 .user-stats-box {
     background: radial-gradient(ellipse farthest-corner at 314% -18%, #b86bd4 0%, #b86bd4 68%, #6b60cb 72%);
     display: flex;
